@@ -8,7 +8,7 @@
 
 3. Create a `.env` file using the `.env.example`:
 
-4. Fill in the required environment values from "Google oAuth"(see `.env.example`).
+4. Fill in the required environment values from "Google oAuth"(see `.env.example`) "Mongo DB Atlas".
 
 5. Start the app: npm start
 
