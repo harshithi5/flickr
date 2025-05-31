@@ -1,11 +1,13 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/flickrdb', {
+const mongoURI = process.env.MONGO_URI;
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.error('Connection error:', err));
 
 const User = require('./models/User');
 const Image = require('./models/Image');
@@ -23,7 +25,7 @@ const PORT = 3000;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // save files in 'uploads' folder
+    cb(null, 'Uploads/'); // save files in 'uploads' folder
   },
   filename: function (req, file, cb) {
     // save files with a unique name: current timestamp + original extension
